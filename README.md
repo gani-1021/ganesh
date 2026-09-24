@@ -1,2 +1,0 @@
-# ganesh
-Pump Performance Calculator
