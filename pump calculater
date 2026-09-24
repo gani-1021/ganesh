@@ -1,0 +1,111 @@
+```python
+import streamlit as st
+import math
+
+# --------------------------------------------------
+# Page Configuration
+# --------------------------------------------------
+
+st.set_page_config(
+    page_title="Pump Performance Calculator",
+    page_icon="💧",
+    layout="centered"
+)
+
+# --------------------------------------------------
+# Title
+# --------------------------------------------------
+
+st.title("💧 Pump Performance Calculator")
+st.write("Calculate hydraulic power, shaft power, pump efficiency, head developed, and discharge.")
+
+st.divider()
+
+# --------------------------------------------------
+# Sidebar Menu
+# --------------------------------------------------
+
+st.sidebar.title("⚙️ Calculations")
+
+choice = st.sidebar.selectbox(
+    "Select Calculation",
+    [
+        "Hydraulic Power",
+        "Shaft Power",
+        "Pump Efficiency",
+        "Head Developed by the Pump",
+        "Discharge"
+    ]
+)
+
+# --------------------------------------------------
+# 1. Hydraulic Power
+# --------------------------------------------------
+
+if choice == "Hydraulic Power":
+
+    st.header("🔹 Hydraulic Power")
+
+    rho = st.number_input(
+        "Enter density (kg/m³)",
+        min_value=0.0,
+        value=1000.0,
+        step=1.0
+    )
+
+    g = st.number_input(
+        "Enter acceleration due to gravity (m/s²)",
+        min_value=0.0,
+        value=9.81,
+        step=0.01
+    )
+
+    Q = st.number_input(
+        "Enter discharge (m³/s)",
+        min_value=0.0,
+        value=0.01,
+        step=0.001,
+        format="%.6f"
+    )
+
+    H = st.number_input(
+        "Enter head developed (m)",
+        min_value=0.0,
+        value=10.0,
+        step=0.1
+    )
+
+    if st.button("Calculate Hydraulic Power", type="primary"):
+
+        power = rho * g * Q * H
+
+        st.success(f"Hydraulic Power = {power:.2f} W")
+        st.success(f"Hydraulic Power = {power / 1000:.4f} kW")
+
+
+# --------------------------------------------------
+# 2. Shaft Power
+# --------------------------------------------------
+
+elif choice == "Shaft Power":
+
+    st.header("🔹 Shaft Power")
+
+    torque = st.number_input(
+        "Enter torque (N-m)",
+        min_value=0.0,
+        value=100.0,
+        step=1.0
+    )
+
+    speed = st.number_input(
+        "Enter speed (RPM)",
+        min_value=0.0,
+        value=1500.0,
+        step=10.0
+    )
+
+    if st.button("Calculate Shaft Power", type="primary"):
+
+        power = (2 * math*
+```
